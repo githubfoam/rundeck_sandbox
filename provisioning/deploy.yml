@@ -11,10 +11,10 @@
     shell: "hostnamectl set-hostname {{ inventory_hostname }}"
   roles:
     - common
-    
-- name: "Boot rundeck hosts"
-  gather_facts: true
-  hosts: vg-rundeck-server-01
-  become: yes
-  roles:
-    - rundeck
+
+# - name: "Boot rundeck hosts"
+#   gather_facts: true
+#   hosts: vg-rundeck-server-01
+#   become: yes
+#   roles:
+#     - rundeck

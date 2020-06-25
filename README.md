@@ -3,7 +3,7 @@ rundeck automation
 
 
 
-[![Build Status](https://travis-ci.com/githubfoam/rundeck-sandbox.svg?branch=dev)](https://travis-ci.com/githubfoam/rundeck-sandbox)  
+[![Build Status](https://travis-ci.com/githubfoam/rundeck-sandbox.svg?branch=master)](https://travis-ci.com/githubfoam/rundeck-sandbox)  
 
 
 nodes(booted together, not sequential)

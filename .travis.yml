@@ -8,10 +8,9 @@ jobs:
           - sudo make deploy-libvirt
           - sudo make deploy-vagrant
           - sudo make deploy-boxes
-
-after_success:
-    - stage: Finalize
-      script: sudo vagrant destroy -f
+      after_success:
+          - stage: Finalize
+            script: sudo vagrant destroy -f
 notifications:
   #email: false
    email:

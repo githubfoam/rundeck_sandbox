@@ -21,6 +21,9 @@ matrix:
         - source ~venvpy3/bin/activate
         - pip install -r requirements.txt
       script:
+          # https://docs.rundeck.com/downloads.html
+          - docker pull rundeck/rundeck:3.3.5
+          - docker image ls 
           - docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:3.3.5
           - docker image ls 
           # Grails application running at http://0.0.0.0:4440/ in environment: production

@@ -1,12 +1,17 @@
 # rundeck_sandbox
-rundeck automation
+
 
 
 
 [![Build Status](https://travis-ci.com/githubfoam/rundeck-sandbox.svg?branch=dev)](https://travis-ci.com/githubfoam/rundeck-sandbox)  
 
+~~~~
+run locally
 
-nodes(booted together, not sequential)
+>vagrant init --template Vagrantfile.provision.bash.erb
+>vagrant up "vg-rundeck-debian"
+>del Vagrantfile
+~~~~
 ~~~~
 https://www.rundeck.com/
 ~~~~

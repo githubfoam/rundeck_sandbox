@@ -7,7 +7,6 @@ set -o xtrace
 
 hostnamectl set-hostname vg-rundeck-ubuntu
 echo "192.168.50.15 vg-rundeck-ubuntu.local vg-rundeck-ubuntu" |sudo tee -a /etc/hosts
-echo "192.168.50.16 vg-rundeck-debian.local vg-rundeck-debian" |sudo tee -a /etc/hosts
 cat /etc/hosts
 
 echo "nameserver 8.8.8.8" |sudo tee -a /etc/resolv.conf

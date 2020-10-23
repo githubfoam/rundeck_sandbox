@@ -5,8 +5,8 @@ set -o nounset
 set -o xtrace
 # set -eox pipefail #safety for script
 
-hostnamectl set-hostname vg-rundeck-debian
-echo "192.168.50.16 vg-rundeck-debian.local vg-rundeck-debian" |sudo tee -a /etc/hosts
+hostnamectl set-hostname vg-rundeck-centos
+echo "192.168.50.18 vg-rundeck-ubuntu.local vg-rundeck-ubuntu" |sudo tee -a /etc/hosts
 cat /etc/hosts
 
 echo "nameserver 8.8.8.8" |sudo tee -a /etc/resolv.conf
@@ -22,16 +22,15 @@ echo "                 ||----w |                                                
 echo "                 ||     ||                                                         "
 echo "========================================================================================="
 
-# https://docs.rundeck.com/docs/administration/install/linux-deb.html#rundeck-enterprise
+# https://docs.rundeck.com/docs/administration/install/linux-rpm.html#rundeck-enterprise
 # Open Source Rundeck
 
-apt-get update -qq
+# add the Rundeck yum repo and install Rundeck
+rpm -Uvh http://repo.rundeck.org/latest.rpm
+yum install -y rundeck java
 
-# Install deb package directly
-# Download deb package: http://rundeck.org/download/deb
-RUNDECK_VERSION="3.3.5.20201019-1_all"
-# https://download.rundeck.org/deb/rundeck_3.3.5.20201019-1_all.deb
-dpkg -i https://download.rundeck.org/deb/rundeck_$RUNDECK_VERSION.deb
+# When new versions of Rundeck are released, upgrade
+# yum update rundeck
 
 # Verify a supported java version is installed
 java --version
@@ -46,7 +45,7 @@ tail -n 40 /var/log/rundeck/service.log
 
 # Navigate to http://localhost:4440/ in a browser.
 # Log in with the username admin and password admin
+curl http://vg-rundeck-centos.local:4440/
 curl http://127.0.0.1:4440/
 curl -v http://localhost:4440/
 curl http://localhost:4440/
-curl http://vg-rundeck-debian.local:4440/

@@ -10,20 +10,20 @@ vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required w
 vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
 
 #https://github.com/chef/bento/tree/master/packer_templates/fedora
-vagrant box add "bento/fedora-32" --provider=virtualbox
-vagrant mutate "bento/fedora-32" libvirt
-vagrant init --template Vagrantfile.provision.bash.erb
-# must be created in project root directory with Vagrantfile template file
-vagrant up --provider=libvirt "vg-rundeck-fedora"
+# vagrant box add "bento/fedora-32" --provider=virtualbox
+# vagrant mutate "bento/fedora-32" libvirt
+# vagrant init --template Vagrantfile.provision.bash.erb
+# # must be created in project root directory with Vagrantfile template file
+# vagrant up --provider=libvirt "vg-debian-01"
 
 
 # TESTED OK
 # https://github.com/chef/bento/tree/master/packer_templates/centos
-# vagrant box add "bento/centos-8.2" --provider=virtualbox
-# vagrant mutate "bento/centos-8.2" libvirt
-# vagrant init --template Vagrantfile.template.erb 
-# # must be created in project root directory with Vagrantfile template file
-# vagrant up --provider=libvirt "vg-compute-06" 
+vagrant box add "bento/centos-8.2" --provider=virtualbox
+vagrant mutate "bento/centos-8.2" libvirt
+vagrant init --template Vagrantfile.provision.bash.erb
+# must be created in project root directory with Vagrantfile template file
+vagrant up --provider=libvirt "vg-compute-06" 
 
 # https://app.vagrantup.com/ubuntu/boxes/bionic64
 # vagrant box add "ubuntu/bionic64" --provider=virtualbox

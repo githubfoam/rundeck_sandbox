@@ -1,4 +1,7 @@
 
+deploy-debian:
+	bash scripts/deploy-debian.sh
+
 deploy-ubuntu:
 	bash scripts/deploy-ubuntu.sh
 

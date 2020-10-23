@@ -54,13 +54,12 @@ vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with differ
 # # must be created in project root directory with Vagrantfile template file
 # vagrant up --provider=libvirt "kuma-control-plane"
 
-# TESTED OK
 # https://github.com/chef/bento/tree/master/packer_templates/ubuntu
-vagrant box add "bento/ubuntu-20.04" --provider=virtualbox
-vagrant mutate "bento/ubuntu-20.04" libvirt
-vagrant init --template Vagrantfile.provision.bash.erb
-# must be created in project root directory with Vagrantfile template file
-vagrant up --provider=libvirt "vg-rundeck-ubuntu"
+# vagrant box add "bento/ubuntu-20.04" --provider=virtualbox
+# vagrant mutate "bento/ubuntu-20.04" libvirt
+# vagrant init --template Vagrantfile.provision.bash.erb
+# # must be created in project root directory with Vagrantfile template file
+# vagrant up --provider=libvirt "vg-rundeck-ubuntu"
 
 # #https://github.com/chef/bento/tree/master/packer_templates/fedora
 # vagrant box add "bento/fedora-32" --provider=virtualbox
@@ -85,10 +84,10 @@ vagrant up --provider=libvirt "vg-rundeck-ubuntu"
 # vagrant up --provider=libvirt "redis"
 
 # https://app.vagrantup.com/debian/boxes/buster64
-# vagrant box add "debian/buster64" --provider=libvirt
-# vagrant init --template Vagrantfile.provision.bash.erb
-# # must be created in project root directory with Vagrantfile template file
-# vagrant up --provider=libvirt "vg-debian-01"
+vagrant box add "debian/buster64" --provider=libvirt
+vagrant init --template Vagrantfile.provision.bash.erb
+# must be created in project root directory with Vagrantfile template file
+vagrant up --provider=libvirt "vg-rundeck-debian"
 
 # https://app.vagrantup.com/generic/boxes/netbsd8
 # vagrant box add "generic/netbsd8" --provider=virtualbox

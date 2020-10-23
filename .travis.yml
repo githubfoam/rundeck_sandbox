@@ -8,6 +8,25 @@ matrix:
   fast_finish: true
   include:  
 
+    - name: "debian provision bash Python 3.7 on bionic amd64"
+      dist: bionic
+      arch: amd64
+      language: python
+      python: 3.7
+      before_install:
+        - pip3 install virtualenv
+        - virtualenv -p $(which python3) ~venvpy3
+        - source ~venvpy3/bin/activate
+        - pip install -r requirements.txt
+      script:
+        - sudo make deploy-vagrant
+        - sudo make deploy-libvirt
+        - sudo make deploy-ubuntu
+      after_success:
+        - deactivate
+        - sudo vagrant destroy -f # required to run Vagrantfile template        
+        - sudo rm Vagrantfile # required to run Vagrantfile template  
+
     - name: "ubuntu provision bash Python 3.7 on bionic amd64"
       dist: bionic
       arch: amd64
@@ -42,7 +61,7 @@ matrix:
           - docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:3.3.5 &
           - docker image ls 
           # Grails application running at http://0.0.0.0:4440/ in environment: production
-          - curl http://0.0.0.0:4440
+          - curl  http://localhost:4440
       after_success:
         - deactivate
         - sudo vagrant destroy -f # required to run Vagrantfile template        

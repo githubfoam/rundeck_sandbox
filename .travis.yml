@@ -27,6 +27,8 @@ matrix:
           - docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:3.3.5 &
           - docker image ls 
           - docker image ps
+          - netstat -ln | grep 4440
+          - netstat -tulpn
           # Grails application running at http://0.0.0.0:4440/ in environment: production
           - sudo cat /etc/hosts
           - curl -I 127.0.0.1

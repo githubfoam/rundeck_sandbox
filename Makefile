@@ -1,21 +1,14 @@
-.PHONY: up vagrant playbook smoketest test clean
 
-up: vagrant playbook
+deploy-ubuntu:
+	bash scripts/deploy-ubuntu.sh
 
-vagrant:
-	@vagrant up --provider=libvirt
-	@vagrant ssh-config > ssh.config
+deploy-libvirt:
+	bash scripts/deploy-libvirt.sh
 
-playbook:
-	@ansible-playbook -i inventories/vagrant.ini swarm.yml
+deploy-vagrant:
+	bash scripts/deploy-vagrant.sh
 
-smoketest:
-	@ansible-playbook -i inventories/vagrant.ini swarm.yml --tags test
+push-image:
+	docker push $(IMAGE)
 
-test:
-	@molecule test
-
-clean:
-	@vagrant destroy -f
-	@rm -rf kubernetes-resources
-	@[ ! -f ssh.config ] || rm ssh.config
+.PHONY: deploy-vagrant deploy-libvirt 

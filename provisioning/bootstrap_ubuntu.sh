@@ -43,4 +43,7 @@ tail -n 40 /var/log/rundeck/service.log
 
 # Navigate to http://localhost:4440/ in a browser.
 # Log in with the username admin and password admin
+curl http://127.0.0.1:4440/
+curl -v http://localhost:4440/
 curl http://localhost:4440/
+curl http://vg-rundeck-ubuntu.local:4440/

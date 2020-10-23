@@ -45,6 +45,9 @@ tail -n 40 /var/log/rundeck/service.log
 # The service is ready once you see something similar to
 # Grails application running at http://localhost:4440 in environment: production
 
-Navigate to http://localhost:4440/ in a browser.
-Log in with the username admin and password admin
+# Navigate to http://localhost:4440/ in a browser.
+# Log in with the username admin and password admin
+curl http://127.0.0.1:4440/
+curl -v http://localhost:4440/
 curl http://localhost:4440/
+curl http://vg-rundeck-debian.local:4440/

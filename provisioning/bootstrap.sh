@@ -18,3 +18,12 @@ echo "             (__)\       )\/\                                             
 echo "                 ||----w |                                                         "
 echo "                 ||     ||                                                         "
 echo "========================================================================================="
+
+# https://docs.rundeck.com/docs/administration/install/linux-deb.html#rundeck-enterprise
+# Open Source Rundeck
+echo "deb https://rundeck.bintray.com/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list
+curl 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add -
+apt-get update -qq
+apt-get install rundeck -qqy
+
+java --version

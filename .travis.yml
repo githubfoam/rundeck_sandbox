@@ -39,9 +39,10 @@ matrix:
         - source ~venvpy3/bin/activate
         - pip install -r requirements.txt
       script:
-          - docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:3.3.5
+          - docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:3.3.5 &
           - docker image ls 
-          # - curl http://localhost:8080
+          # Grails application running at http://0.0.0.0:4440/ in environment: production
+          - curl http://0.0.0.0:4440
       after_success:
         - deactivate
         - sudo vagrant destroy -f # required to run Vagrantfile template        

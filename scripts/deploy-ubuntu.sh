@@ -59,7 +59,7 @@ vagrant box add "bento/ubuntu-20.04" --provider=virtualbox
 vagrant mutate "bento/ubuntu-20.04" libvirt
 vagrant init --template Vagrantfile.provision.bash.erb
 # must be created in project root directory with Vagrantfile template file
-vagrant up --provider=libvirt "kuma-control-plane"
+vagrant up --provider=libvirt "vg-rundeck-ubuntu"
 
 # #https://github.com/chef/bento/tree/master/packer_templates/fedora
 # vagrant box add "bento/fedora-32" --provider=virtualbox

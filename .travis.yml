@@ -8,44 +8,7 @@ matrix:
   fast_finish: true
   include:  
 
-    - name: "debian provision bash Python 3.7 on bionic amd64"
-      dist: bionic
-      arch: amd64
-      language: python
-      python: 3.7
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-        - pip install -r requirements.txt
-      script:
-        - sudo make deploy-vagrant
-        - sudo make deploy-libvirt
-        - sudo make deploy-ubuntu
-      after_success:
-        - deactivate
-        - sudo vagrant destroy -f # required to run Vagrantfile template        
-        - sudo rm Vagrantfile # required to run Vagrantfile template  
-
-    - name: "ubuntu provision bash Python 3.7 on bionic amd64"
-      dist: bionic
-      arch: amd64
-      language: python
-      python: 3.7
-      before_install:
-        - pip3 install virtualenv
-        - virtualenv -p $(which python3) ~venvpy3
-        - source ~venvpy3/bin/activate
-        - pip install -r requirements.txt
-      script:
-        - sudo make deploy-vagrant
-        - sudo make deploy-libvirt
-        - sudo make deploy-ubuntu
-      after_success:
-        - deactivate
-        - sudo vagrant destroy -f # required to run Vagrantfile template        
-        - sudo rm Vagrantfile # required to run Vagrantfile template  
-          
+         
 # https://docs.rundeck.com/docs/administration/install/docker.html#rundeck-enterprise
     - name: "deploy Rundeck with Docker"
       dist: bionic
@@ -58,59 +21,12 @@ matrix:
         - source ~venvpy3/bin/activate
         - pip install -r requirements.txt
       script:
-          - docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:3.3.5 &
+          - docker run --name some-rundeck -p 4440:4440 -v data:/home/rundeck/server/data rundeck/rundeck:3.3.5
           - docker image ls 
           # Grails application running at http://0.0.0.0:4440/ in environment: production
-          - curl  http://localhost:4440
+          - sudo cat /etc/hosts
+          - curl  -v http://localhost:4440
       after_success:
         - deactivate
         - sudo vagrant destroy -f # required to run Vagrantfile template        
         - sudo rm Vagrantfile # required to run Vagrantfile template 
-
-
-# https://www.jenkins.io/doc/book/installing/macos/
-    # - name: "deploy jenkins w homebrew on macOS 10.15.7 osx xcode12.2"
-    #   os: osx
-    #   osx_image:
-    #     - xcode12.2 #macOS 10.15.7
-    #   addons:
-    #     homebrew:
-    #       packages:
-    #       - jenkins-lts #Long-term support (LTS)
-    #       - python
-    #       - git
-    #       update: true
-    #   language: java
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #     - python --version
-    #     - pip install -r requirements.txt
-    #   script:
-    #   - brew services start jenkins-lts
-    #   - brew services stop jenkins-lts
-    #   - sudo cat /var/lib/jenkins/secrets/initialAdminPassword 
-    #   # - cat /Users/travis/.jenkins/secrets/initialAdminPassword
-    #   after_success:
-    #     - deactivate
-
-    # - name: "deploy Jenkins with Docker"
-    #   dist: bionic
-    #   language: python
-    #   python: 3.7
-    #   services: docker
-    #   before_install:
-    #     - pip3 install virtualenv
-    #     - virtualenv -p $(which python3) ~venvpy3
-    #     - source ~venvpy3/bin/activate
-    #     - pip install -r requirements.txt
-    #   script:
-    #       - docker run -p 8080:8080 -p 50000:50000 -v ~/jenkins_home:/var/jenkins_home jenkins/jenkins:lts
-    #       - sudo docker exec ${CONTAINER_ID or CONTAINER_NAME} cat /var/jenkins_home/secrets/initialAdminPassword
-    #       # - curl http://localhost:8080
-    #   after_success:
-    #     - deactivate
-    #     - sudo vagrant destroy -f # required to run Vagrantfile template        
-    #     - sudo rm Vagrantfile # required to run Vagrantfile template 
-

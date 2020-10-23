@@ -1,3 +1,8 @@
+deploy-centos:
+	bash scripts/deploy-centos.sh
+
+deploy-fedora:
+	bash scripts/deploy-fedora.sh
 
 deploy-debian:
 	bash scripts/deploy-debian.sh

@@ -29,9 +29,16 @@ apt-get update -qq
 
 # Install deb package directly
 # Download deb package: http://rundeck.org/download/deb
+# RUNDECK_VERSION="3.3.5.20201019-1_all"
+# dpkg -i https://download.rundeck.org/deb/rundeck_3.3.5.20201019-1_all.deb
+# wget https://download.rundeck.org/deb/rundeck_$RUNDECK_VERSION.deb
+# dpkg -i rundeck_$RUNDECK_VERSION.deb
+
+# https://docs.rundeck.com/downloads.html
+apt-get install -qqy openjdk-8-jdk-headless
 RUNDECK_VERSION="3.3.5.20201019-1_all"
-# https://download.rundeck.org/deb/rundeck_3.3.5.20201019-1_all.deb
-dpkg -i https://download.rundeck.org/deb/rundeck_$RUNDECK_VERSION.deb
+wget https://download.rundeck.org/deb/rundeck_$RUNDECK_VERSION.deb
+dpkg -i rundeck_3.3.5.20201019-1_all.deb
 
 # Verify a supported java version is installed
 java --version

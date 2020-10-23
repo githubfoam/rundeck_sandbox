@@ -24,10 +24,16 @@ echo "==========================================================================
 
 # https://docs.rundeck.com/docs/administration/install/linux-deb.html#rundeck-enterprise
 # Open Source Rundeck
-echo "deb https://rundeck.bintray.com/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list
-curl 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add -
-apt-get update -qq
-apt-get install rundeck -qqy
+# echo "deb https://rundeck.bintray.com/rundeck-deb /" | sudo tee -a /etc/apt/sources.list.d/rundeck.list
+# curl 'https://bintray.com/user/downloadSubjectPublicKey?username=bintray' | sudo apt-key add -
+# apt-get update -qq
+# apt-get install -qqy rundeck 
+
+# https://docs.rundeck.com/downloads.html
+apt-get install -qqy openjdk-8-jdk-headless
+RUNDECK_VERSION="3.3.5.20201019-1_all"
+wget https://download.rundeck.org/deb/rundeck_$RUNDECK_VERSION.deb
+dpkg -i rundeck_3.3.5.20201019-1_all.deb
 
 # Verify a supported java version is installed
 java --version

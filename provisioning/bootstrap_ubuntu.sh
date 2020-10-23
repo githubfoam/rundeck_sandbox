@@ -32,11 +32,11 @@ echo "==========================================================================
 # https://docs.rundeck.com/downloads.html
 apt-get install -qqy openjdk-8-jdk-headless
 RUNDECK_VERSION="3.3.5.20201019-1_all"
-wget https://download.rundeck.org/deb/rundeck_$RUNDECK_VERSION.deb
+wget -q https://download.rundeck.org/deb/rundeck_$RUNDECK_VERSION.deb
 dpkg -i rundeck_3.3.5.20201019-1_all.deb
 
 # Verify a supported java version is installed
-java --version
+java -version
 
 # start Rundeck
 service rundeckd start

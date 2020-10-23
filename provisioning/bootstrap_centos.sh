@@ -33,7 +33,7 @@ yum install -y rundeck java
 # yum update rundeck
 
 # Verify a supported java version is installed
-java --version
+java -version
 
 # start Rundeck
 service rundeckd start

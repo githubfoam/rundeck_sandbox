@@ -31,7 +31,7 @@ echo "==========================================================================
 rpm -i rundeck-$RUNDECK_VERSION.noarch.rpm
 
 # Verify a supported java version is installed
-java --version
+java -version
 
 # start Rundeck
 service rundeckd start

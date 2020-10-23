@@ -9,13 +9,20 @@ echo "==========================================================================
 vagrant plugin install vagrant-libvirt #The vagrant-libvirt plugin is required when using KVM on Linux
 vagrant plugin install vagrant-mutate #Convert vagrant boxes to work with different providers
 
+# TESTED NOT OK
+# https://travis-ci.com/github/githubfoam/rundeck_sandbox/jobs/405110613
 #https://github.com/chef/bento/tree/master/packer_templates/fedora
-vagrant box add "bento/fedora-32" --provider=virtualbox
-vagrant mutate "bento/fedora-32" libvirt
+# vagrant box add "bento/fedora-32" --provider=virtualbox
+# vagrant mutate "bento/fedora-32" libvirt
+# vagrant init --template Vagrantfile.provision.bash.erb
+# # must be created in project root directory with Vagrantfile template file
+# vagrant up --provider=libvirt "vg-rundeck-fedora"
+
+# https://app.vagrantup.com/fedora/boxes/32-cloud-base
+vagrant box add "fedora/32-cloud-base" --provider=libvirt
 vagrant init --template Vagrantfile.provision.bash.erb
 # must be created in project root directory with Vagrantfile template file
 vagrant up --provider=libvirt "vg-rundeck-fedora"
-
 
 # TESTED OK
 # https://github.com/chef/bento/tree/master/packer_templates/centos

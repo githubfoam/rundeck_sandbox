@@ -23,7 +23,7 @@ vagrant box add "bento/centos-8.2" --provider=virtualbox
 vagrant mutate "bento/centos-8.2" libvirt
 vagrant init --template Vagrantfile.provision.bash.erb
 # must be created in project root directory with Vagrantfile template file
-vagrant up --provider=libvirt "vg-compute-06" 
+vagrant up --provider=libvirt "vg-rundeck-centos" 
 
 # https://app.vagrantup.com/ubuntu/boxes/bionic64
 # vagrant box add "ubuntu/bionic64" --provider=virtualbox
